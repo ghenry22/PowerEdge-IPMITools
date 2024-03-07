@@ -2,8 +2,11 @@
 # TODO: wrap this in a bashic interactive script
 #
 
-# Get Sensor Status
+# Get Sensor Status (get names of sensors to use with sdr get)
 ipmitool -I lanplus -U <user> -P <pass> -H 192.168.88.90 sdr
+
+# Get Fan Sensor Data for R730
+ipmitool -I lanplus -U root -P calvin -H 192.168.88.90 sdr get "Fan1 RPM" "Fan2 RPM" "Fan3 RPM" "Fan4 RPM" "Fan5 RPM" "Fan6 RPM"
 
 # Enable Manual Fan Control
 ipmitool -I lanplus -U <user> -P <pass> -H 192.168.88.90 raw 0x30 0x30 0x01 0x00
